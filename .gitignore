@@ -4,3 +4,5 @@ allure-report/
 allure-results/
 _results_/
 json-report/
+Results/
+mochawesome-report/
