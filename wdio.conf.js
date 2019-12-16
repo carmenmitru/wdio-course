@@ -1,3 +1,4 @@
+const video = require('wdio-video-reporter');
 exports.config = {
     //
     // ====================
@@ -129,7 +130,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['concise', [
+    reporters: [[
+        video, {
+            saveAllVideos: true
+        }
+    ], [
         'allure', {
             outputDir: './allure-results',
             disableMochaHooks: true
