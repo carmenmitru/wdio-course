@@ -6,3 +6,4 @@ _results_/
 json-report/
 Results/
 mochawesome-report/
+.env

@@ -1,4 +1,4 @@
-const video = require('wdio-video-reporter');
+require('dotenv').config()
 exports.config = {
     //
     // ====================
@@ -130,14 +130,15 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: [[
-        'mochawesome', {
-            outputDir: './Results',
-            outputFileFormat: function (opts) {
-                return `results-${opts.cid}.${opts.capabilities.browserName}.json`
-            }
-        }
-    ]],
+    reporters: [
+        'spec',
+        ['sumologic', {
+            // define sync interval how often logs get pushed to Sumologic
+            syncInterval: 100,
+            // endpoint of collector source
+            sourceAddress: process.env.SUMO_SOURCE_ADDRESS
+        }]
+    ],
 
     //
     // Options to be passed to Mocha.
