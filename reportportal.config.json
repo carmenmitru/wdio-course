@@ -1,0 +1,16 @@
+{
+  "reportPortalClientConfig": {
+    "token": "====Insert UUID=====",
+    "endpoint": "http://localhost:8080/api/v1",
+    "launch": "==== Insert lauch id ======",
+    "project": "====Insert Project ID=====",
+    "mode": "DEFAULT",
+    "debug": false,
+    "tags": ["functional"]
+  },
+  "reportSeleniumCommands": false,
+  "autoAttachScreenshots": false,
+  "seleniumCommandsLogLevel": "debug",
+  "screenshotsLogLevel": "info",
+  "parseTagsFromTestTitle": false
+}

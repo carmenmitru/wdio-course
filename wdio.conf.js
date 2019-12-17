@@ -1,4 +1,6 @@
-require('dotenv').config()
+const reportportal = require('wdio-reportportal-reporter');
+const RpService = require("wdio-reportportal-service");
+const conf = JSON.parse(require('fs').readFileSync('reportportal.config.json'));
 exports.config = {
     //
     // ====================
