@@ -8,8 +8,6 @@ delete defaultConfig.path;
 
 // clone default config and set up browserstack service
 var crossbrowsertesting = Object.assign(defaultConfig, {
-    runner: 'local',
-
     hostname: 'hub.crossbrowsertesting.com',
     port: 80,
 
