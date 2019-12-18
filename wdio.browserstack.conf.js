@@ -5,9 +5,11 @@ var defaultConfig = require('./wdio.conf.js').config;
 
 // setup capabilities
 let capabilities = [{
-    //
+    // setup browser
     browserName: 'chrome',
+    // setup build name : username +  current date 
     build: process.env.BROWSERSTACK_USERNAME + " " + new Date().toDateString(),
+    // setup project name
     project: 'WebdriverIO Course'
 }]
 
