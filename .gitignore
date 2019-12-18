@@ -9,3 +9,4 @@ mochawesome-report/
 test/
 .env
 junit-results.html
+local.log

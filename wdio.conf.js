@@ -1,11 +1,10 @@
-const video = require('wdio-video-reporter');
 exports.config = {
     //
     // ====================
     // Runner Configuration
     // ====================
     //
-    // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
+    // WebdriverIO allows iåt to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
     //
@@ -130,13 +129,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: [['junit', {
-        outputDir: './test/reports/junit-results/',
-        outputFileFormat: function (opts) { // optional
-            return `results-${opts.cid}.${opts.capabilities}.xml`
-        }
-    }
-    ]],
+    reporters: ['spec'],
 
     //
     // Options to be passed to Mocha.
