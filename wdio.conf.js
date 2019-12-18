@@ -130,13 +130,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: [[
-        'mochawesome', {
-            outputDir: './Results',
-            outputFileFormat: function (opts) {
-                return `results-${opts.cid}.${opts.capabilities.browserName}.json`
-            }
+    reporters: [['junit', {
+        outputDir: './test/reports/junit-results/',
+        outputFileFormat: function (opts) { // optional
+            return `results-${opts.cid}.${opts.capabilities}.xml`
         }
+    }
     ]],
 
     //

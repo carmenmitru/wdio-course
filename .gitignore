@@ -6,3 +6,6 @@ _results_/
 json-report/
 Results/
 mochawesome-report/
+test/
+.env
+junit-results.html
