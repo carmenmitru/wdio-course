@@ -8,7 +8,7 @@ var defaultConfig = require('./wdio.conf.js').config;
 delete defaultConfig.path;
 
 // clone default config and set up browserstack service
-var browserStackConfig = Object.assign(defaultConfig, {
+var testingBotConfig = Object.assign(defaultConfig, {
     capabilities: [
         {
             browserName: 'chrome',
@@ -22,4 +22,4 @@ var browserStackConfig = Object.assign(defaultConfig, {
     tbTunnel: true
 });
 
-exports.config = browserStackConfig;
+exports.config = testingBotConfig;
