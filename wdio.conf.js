@@ -131,13 +131,7 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: [
-        'spec',
-        ['sumologic', {
-            // define sync interval how often logs get pushed to Sumologic
-            syncInterval: 100,
-            // endpoint of collector source
-            sourceAddress: process.env.SUMO_SOURCE_ADDRESS
-        }]
+        'spec'
     ],
 
     //
