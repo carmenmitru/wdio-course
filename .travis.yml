@@ -7,8 +7,7 @@ branches:
   only:
     - travis
 notifications:
-  slack:
-    secure: https://hooks.slack.com/services/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#general
+  slack: slmQp677zJPMelisn08se9Cb#general
 
 addons:
   chrome: stable
