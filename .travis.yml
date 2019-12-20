@@ -6,8 +6,6 @@ node_js:
 branches:
   only:
     - travis
-notifications:
-  slack: slmQp677zJPMelisn08se9Cb#general
 
 addons:
   chrome: stable
