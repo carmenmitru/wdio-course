@@ -2,26 +2,20 @@ language: node_js
 
 node_js:
   - "10.15.0"
+
 branches:
-    only:
-        - travis
+  only:
+    - travis
 notifications:
   slack:
     secure: https://hooks.slack.com/services/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#general
 
 addons:
-    apt:
-        packages:
-          - google-chrome-stable
+  chrome: stable
 
 cache:
   directories:
     - node_modules
-
-addons:
-  apt:
-    packages:
-      - google-chrome-stable
 
 before_script:
   - "npm install --no-package-lock"

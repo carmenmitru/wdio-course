@@ -22,7 +22,7 @@
     "@wdio/sync": "^5.16.5",
     "chai": "^4.2.0",
     "chai-webdriverio": "^1.0.0",
-    "chromedriver": "^78.0.1",
+    "chromedriver": "78.0.0",
     "join": "^3.0.0",
     "reg-cli": "^0.15.12",
     "selenium-standalone": "^6.16.0",
