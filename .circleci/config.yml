@@ -7,7 +7,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:10.12-browsers
 
-    working_directory: ~/WebdriverIO_v5_TypeScript
+    working_directory: ~/wdio-course
 
     steps:
       - checkout
