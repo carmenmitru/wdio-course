@@ -1,4 +1,5 @@
 const video = require('wdio-video-reporter');
+const path = require("path");
 exports.config = {
     //
     // ====================
@@ -114,7 +115,17 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', 'selenium-standalone'],
+    services: ['chromedriver', 'selenium-standalone', [
+        "image-comparison",
+        {
+            //   actualFolder: path.join(process.cwd(), "./visual-reg/testActual"),
+            baselineFolder: path.join(process.cwd(), "./visual-reg/baseline"),
+            //    diffFolder: path.join(process.cwd(), "./visual-reg/testDiff"),
+            screenshotPath: path.join(process.cwd(), './visual-reg/'),
+            autoSaveBaseline: true,
+            formatImageName: "{tag}-{logName}-{width}x{height}",
+        }
+    ]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
