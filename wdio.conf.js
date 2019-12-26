@@ -1,4 +1,6 @@
-const video = require('wdio-video-reporter');
+require("dotenv").config();
+// let slack = require('./slack-service.js');
+let markdownReporter = require('wdio-markdown-reporter');
 exports.config = {
     //
     // ====================
@@ -130,11 +132,10 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['concise', [
-        'json', {
-            outputDir: './json-report'
-        }
-    ]],
+    reporters: [[markdownReporter, {
+        outputDir: './mk/',
+        filename: "markdownReport"
+    }]],
 
     //
     // Options to be passed to Mocha.
