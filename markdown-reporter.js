@@ -12,9 +12,16 @@ class MarkdownReporter extends WDIOReporter {
         this.suiteUids = [];
 
         this.suites = [];
+        this.stateCounts = {
+            failed: 0,
+            passed: 0
+        };
         this.createHeaderReport();
     }
 
+    onTestPass() {
+        this.stateCounts.passed++;
+    }
 
     onSuiteStart(suite) {
         this.suiteUids.push(suite.uid);
@@ -23,6 +30,13 @@ class MarkdownReporter extends WDIOReporter {
     onSuiteEnd(suite) {
         this.suites.push(suite);
     }
+    onTestSkip() {
+        this.stateCounts.skipped++;
+    }
+    onTestFail() {
+        this.stateCounts.failed++;
+    }
+
     onRunnerEnd(runner) {
         this.createReport(runner);
     }
@@ -75,7 +89,7 @@ class MarkdownReporter extends WDIOReporter {
             suite.tests.map(test => {
                 if (test.state === "failed") {
                     output.push(
-                        `__${test.error.message}__ \n  > **AssertionError:**  ${test.error.stack} \n`
+                        `__${test.error.message}__ \n  > **AssertionError:**  ${test.error.stack} \n\n`
                     );
                 }
             })
