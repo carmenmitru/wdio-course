@@ -1,4 +1,5 @@
-const video = require('wdio-video-reporter');
+const path = require("path");
+require("dotenv").config();
 exports.config = {
     //
     // ====================
@@ -98,7 +99,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://webdriverio-course-site.netlify.com/',
+    baseUrl: 'https://wdio-v2-course-website.netlify.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -114,7 +115,17 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', 'selenium-standalone'],
+    services: ['chromedriver', 'selenium-standalone', [
+        "image-comparison",
+        {
+            //   actualFolder: path.join(process.cwd(), "./visual-reg/testActual"),
+            baselineFolder: path.join(process.cwd(), "./visual-reg/baseline"),
+            //    diffFolder: path.join(process.cwd(), "./visual-reg/testDiff"),
+            screenshotPath: path.join(process.cwd(), './visual-reg/'),
+            autoSaveBaseline: true,
+            formatImageName: "{tag}-{logName}-{width}x{height}",
+        }
+    ]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -130,11 +141,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['concise', [
-        'json', {
-            outputDir: './json-report'
-        }
-    ]],
+    reporters: ['concise'],
 
     //
     // Options to be passed to Mocha.
@@ -178,6 +185,13 @@ exports.config = {
         var chaiWebdriver = require('chai-webdriverio').default;
         chai.use(chaiWebdriver(browser));
         global.expect = chai.expect;
+
+        // Setup Appltools SDK
+
+        const { Eyes, Target } = require("@applitools/eyes-webdriverio");
+        global.eyes = new Eyes();
+        global.Target = Target;
+        eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
     },
     /**
      * Runs before a WebdriverIO command gets executed.

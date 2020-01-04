@@ -2,12 +2,26 @@ describe("Iframe", () => {
     beforeEach(() => {
         browser.url("./#/iframe");
     })
-    it("renders the text inside the iframe", () => {
-        let btn = browser.$("button");
-        let header = browser.$("h1");
-        btn.click();
-        browser.switchToFrame(0); //enters in the frame
-        console.log("Header text" + header.getText());
-        expect(header.getText()).to.equal("From parent to iframe");
+    it("should screenshot iframe page", async () => {
+
+        const viewportSize = {
+            width: 1440,
+            height: 900
+        }
+        await eyes.open(browser, "Iframe", "Iframe Fullscreen", viewportSize);
+        await eyes.check("Iframe", Target.window());
+        await eyes.closeAsync();
+        await eyes.abortIfNotClosed();
+    });
+
+    it("should screenshot the navbar element", async () => {
+        const viewportSize = {
+            width: 1440,
+            height: 900
+        }
+        await eyes.open(browser, "Navbar El", "Navbar El Screenshot", viewportSize);
+        await eyes.checkElementBySelector("nav");
+        await eyes.closeAsync();
+        await eyes.abortIfNotClosed();
     });
 });
